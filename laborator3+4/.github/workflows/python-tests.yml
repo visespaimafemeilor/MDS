@@ -1,0 +1,25 @@
+name: Rulare Teste Automate MDS
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Copiere cod din repository
+      uses: actions/checkout@v3
+
+    - name: Configurare Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.10"
+
+    - name: Rulare teste automate
+      run: |
+        cd aplicatie_cursuri
+        python -m unittest test_courses.py
