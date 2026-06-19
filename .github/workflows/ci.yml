@@ -14,9 +14,14 @@ jobs:
         with:
           python-version: "3.12"
 
-      - run: pip install pytest
+      - run: pip install pytest ruff
 
-      - name: Rulare pytest in folderul laborator8
+      - name: Rulare linter (Ruff)
+        run: |
+          cd laborator8
+          ruff check .
+
+      - name: Rulare pytest
         run: |
           cd laborator8
           pytest -q
